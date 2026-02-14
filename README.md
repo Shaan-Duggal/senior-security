@@ -77,13 +77,19 @@ This repo includes `.github/workflows/deploy.yml` using:
 
 ## Placeholder TODO map
 
-Replace these before launch:
+Open items to replace before launch:
 
-- Footer contact email: `TODO@seniorsec.org`
-- Footer Instagram handle: `@TODO_HANDLE`
+- Footer phone/contact line placeholder in `src/components/Footer.astro`
 - Workshops request URL placeholder in `src/pages/workshops.astro`
-- Donation URL placeholder in `src/pages/donate.astro`
 - Local support contacts placeholder in `src/pages/get-help.astro`
+- Ambassador program description placeholder in `src/pages/about.astro`
+- Generate full production favicon set (ICO + Apple touch icon + multiple PNG sizes)
+
+Completed recently:
+
+- Footer contact email set to `contact@seniorsec.org`
+- Footer Instagram handle set to `@seniorsecorg`
+- Donation page placeholder replaced with reputable senior-support charity links
 
 ## CONTRIBUTING (content + sourcing rules)
 
@@ -103,5 +109,3 @@ Replace these before launch:
 ## Favicon note
 
 `public/favicon.svg` is a lightweight brand-aligned fallback.
-
-TODO: Generate full production favicon set from the official logo (ICO + Apple touch icon + multiple PNG sizes).

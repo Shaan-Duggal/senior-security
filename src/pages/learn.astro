@@ -33,10 +33,21 @@ const renderedGuides = await Promise.all(
           <article
             class={`panel p-8 ${guide.data.type === 'checklist' ? 'checklist' : ''}`}
             id={guide.id.replace(/\.md$/, '')}
+            data-guide-article
           >
             <h2 class="mt-0">{guide.data.title}</h2>
             <p class="text-[#2d4f73]">{guide.data.summary}</p>
-            {guide.data.printable && <p class="printable-label">Printable checklist</p>}
+            {guide.data.printable && (
+              <div class="printable-actions">
+                <button
+                  type="button"
+                  class="print-button js-print-guide no-print"
+                  data-guide-id={guide.id.replace(/\.md$/, '')}
+                >
+                  Print this checklist
+                </button>
+              </div>
+            )}
             <div class="prose"><Content /></div>
           </article>
         );
@@ -57,3 +68,30 @@ const renderedGuides = await Promise.all(
     </div>
   </section>
 </PageLayout>
+
+<script is:inline>
+  const clearPrintSelection = () => {
+    document.body.classList.remove('print-single-guide');
+    document.querySelectorAll('[data-guide-article]').forEach((article) => {
+      article.classList.remove('is-print-target');
+    });
+  };
+
+  window.addEventListener('afterprint', clearPrintSelection);
+
+  document.querySelectorAll('.js-print-guide').forEach((button) => {
+    button.addEventListener('click', () => {
+      const guideId = button.getAttribute('data-guide-id');
+      if (!guideId) return;
+
+      const target = document.getElementById(guideId);
+      if (!target) return;
+
+      clearPrintSelection();
+      target.classList.add('is-print-target');
+      document.body.classList.add('print-single-guide');
+
+      window.print();
+    });
+  });
+</script>

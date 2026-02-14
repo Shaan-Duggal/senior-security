@@ -8,6 +8,10 @@ interface Props {
 const { href, text, variant = 'primary' } = Astro.props;
 ---
 
-<a class={`inline-flex items-center rounded-xl border px-5 py-3 text-base font-semibold no-underline transition ${variant === 'primary' ? 'border-[#0f3f6d] bg-[#0f3f6d] text-white hover:bg-[#0a3157]' : 'border-[#0f3f6d] bg-white text-[#0f3f6d] hover:bg-[#e8f0f4]'}`} href={href}>
+<a class={`inline-flex items-center rounded-xl border px-5 py-3 text-base font-semibold no-underline transition ${
+  variant === 'primary'
+    ? 'border-[#0f3f6d] bg-[#0f3f6d] !text-white hover:bg-[#0a3157] hover:!text-white visited:!text-white'
+    : 'border-[#0f3f6d] bg-white !text-[#0f3f6d] hover:bg-[#e8f0f4] hover:!text-[#0a3157] visited:!text-[#0f3f6d]'
+}`} href={href}>
   {text}
 </a>

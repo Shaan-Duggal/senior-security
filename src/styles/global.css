@@ -193,33 +193,46 @@ textarea:focus-visible {
   font-weight: 700;
 }
 
-.printable-label {
-  display: inline-block;
+.printable-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
   margin-top: 0.85rem;
+}
+
+.print-button {
+  border: 1px solid var(--brand);
+  background: #fff;
+  color: var(--brand);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #28527d;
-  background: #e6f0f7;
-  padding: 0.3rem 0.65rem;
-  border-radius: 999px;
+  cursor: pointer;
+}
+
+.print-button:hover {
+  background: #e8f0f4;
+  color: var(--brand-strong);
 }
 
 .brand-mark {
   display: inline-block;
-  width: 56px;
-  height: 56px;
+  width: 42px;
+  height: 42px;
   border: 1px solid #bdd0de;
   border-radius: 0.6rem;
   background-color: #e8f0f4;
-  background-image: url('/brand/logo.jpeg');
+  background-image: url('/brand/logo.svg');
   background-repeat: no-repeat;
-  background-size: 225% auto;
-  background-position: 7% 52%;
+  background-size: contain;
+  background-position: center;
 }
 
 .brand-mark-small {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
 }
 
 @media (max-width: 840px) {
@@ -231,6 +244,26 @@ textarea:focus-visible {
 @media print {
   .no-print {
     display: none !important;
+  }
+
+  body.print-single-guide #main-content * {
+    visibility: hidden !important;
+  }
+
+  body.print-single-guide #main-content .is-print-target,
+  body.print-single-guide #main-content .is-print-target * {
+    visibility: visible !important;
+  }
+
+  body.print-single-guide #main-content .is-print-target {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
   }
 
   html,
