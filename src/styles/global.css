@@ -109,6 +109,14 @@ textarea:focus-visible {
   border: 1px solid var(--border);
   border-radius: 1rem;
   box-shadow: var(--shadow);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgb(15 63 109 / 14%);
 }
 
 .section-space {
@@ -196,6 +204,24 @@ textarea:focus-visible {
   border-radius: 999px;
 }
 
+.brand-mark {
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+  border: 1px solid #bdd0de;
+  border-radius: 0.6rem;
+  background-color: #e8f0f4;
+  background-image: url('/brand/logo.jpeg');
+  background-repeat: no-repeat;
+  background-size: 225% auto;
+  background-position: 7% 52%;
+}
+
+.brand-mark-small {
+  width: 40px;
+  height: 40px;
+}
+
 @media (max-width: 840px) {
   body {
     font-size: 1.05rem;
@@ -216,6 +242,7 @@ textarea:focus-visible {
 
   .panel,
   .checklist {
+    transform: none !important;
     box-shadow: none;
     border: 1px solid #333;
     background: #fff;
