@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+  href?: string;
+}
+
+const { title, summary, href } = Astro.props;
+---
+
+<article class="panel h-full p-6">
+  <h3 class="mt-0 mb-3 text-2xl">{title}</h3>
+  <p class="mb-0 text-[#2d4f73]">{summary}</p>
+  {href && (
+    <p class="mt-4 mb-0">
+      <a href={href} class="font-semibold">Read more</a>
+    </p>
+  )}
+</article>

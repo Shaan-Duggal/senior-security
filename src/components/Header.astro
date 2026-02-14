@@ -1,0 +1,31 @@
+---
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/scam-library', label: 'Scam Library' },
+  { href: '/learn', label: 'Learn' },
+  { href: '/workshops', label: 'Workshops' },
+  { href: '/about', label: 'About' },
+  { href: '/get-help', label: 'Get Help' },
+  { href: '/donate', label: 'Donate' }
+];
+---
+
+<header class="no-print sticky top-0 z-40 border-b border-[#bdd0de] bg-[#eef4f7f2] backdrop-blur">
+  <div class="container py-3">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <a href="/" class="flex items-center gap-3 no-underline" aria-label="Senior Security home">
+        <img src="/brand/logo.jpeg" alt="Senior Security logo" width="52" height="52" class="rounded-lg border border-[#bdd0de]" />
+        <span class="text-2xl font-bold text-[#0f3f6d]">Senior Security</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-base">
+          {navItems.map((item) => (
+            <li>
+              <a class="rounded-md px-3 py-2 no-underline hover:bg-[#dfeaf1]" href={item.href}>{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

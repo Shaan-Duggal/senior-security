@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import Checklist from '../components/Checklist.astro';
+import Callout from '../components/Callout.astro';
+
+const guides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
+const renderedGuides = await Promise.all(
+  guides.map(async (guide) => ({
+    guide,
+    rendered: await render(guide)
+  }))
+);
+---
+
+<PageLayout
+  title="Learn"
+  description="Use evergreen scam-prevention guides and printable checklists built for older adults and families."
+  canonicalPath="/learn"
+  intro="Choose one guide at a time and practice with someone you trust."
+>
+  <section class="section-space pb-0">
+    <Callout title="Practice makes prevention easier" type="tip">
+      <p class="m-0">
+        Keep one checklist by your phone and another near your computer. Calm repetition helps under pressure.
+      </p>
+    </Callout>
+
+    <div class="mt-6 space-y-6">
+      {renderedGuides.map(({ guide, rendered }) => {
+        const Content = rendered.Content;
+        return (
+          <article
+            class={`panel p-8 ${guide.data.type === 'checklist' ? 'checklist' : ''}`}
+            id={guide.id.replace(/\.md$/, '')}
+          >
+            <h2 class="mt-0">{guide.data.title}</h2>
+            <p class="text-[#2d4f73]">{guide.data.summary}</p>
+            {guide.data.printable && <p class="printable-label">Printable checklist</p>}
+            <div class="prose"><Content /></div>
+          </article>
+        );
+      })}
+    </div>
+
+    <div class="mt-6">
+      <Checklist
+        title="Quick reset when a message feels urgent"
+        items={[
+          'Pause and breathe before you answer.',
+          'Do not click links or call numbers from unexpected messages.',
+          'Contact the company or agency using a trusted number you look up yourself.',
+          'Tell a trusted person what happened before sending money.',
+          'Keep screenshots and receipts in case you need to report.'
+        ]}
+      />
+    </div>
+  </section>
+</PageLayout>

@@ -1,11 +1,59 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import MetricStat from '../components/MetricStat.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const scams = (await getCollection('scams')).sort((a, b) => a.data.order - b.data.order);
+const toSlug = (id: string) => id.replace(/\.md$/, '');
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  title="Senior Security | Calm, practical scam prevention for older adults"
+  description="Senior Security offers plain-language scam prevention guides, workshops, and immediate help steps for older adults and families."
+  canonicalPath="/"
+>
+  <section class="section-space">
+    <div class="container">
+      <div class="panel p-8 md:p-10">
+        <p class="mb-2 mt-0 font-semibold text-[#28527d]">Senior Security</p>
+        <h1 class="mt-0">Practical protection, shared with care.</h1>
+        <p class="text-xl text-[#2d4f73]">
+          We help older adults, families, and caregivers recognize scams, slow down pressure, and
+          respond with confidence. No shame. No panic. Just clear next steps.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <Button href="/learn" text="Start learning" />
+          <Button href="/get-help" text="Get help" variant="secondary" />
+          <Button href="/scam-library" text="Browse scam library" variant="secondary" />
+          <Button href="/donate" text="Support our work" variant="secondary" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-space pt-0">
+    <div class="container">
+      <h2>Why this work matters</h2>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <MetricStat value="$2.4B" label="Reported FTC fraud losses among adults age 60+ in 2024, up from about $600M in 2020." sourceRef="FTC 2024-2025 report" />
+        <MetricStat value="147,127" label="IC3 elder-fraud complaints filed by people age 60+ in 2024." sourceRef="FBI IC3 2024 annual report" />
+        <MetricStat value="$4.885B" label="IC3-reported losses for victims age 60+ in 2024." sourceRef="FBI IC3 2024 annual report" />
+        <MetricStat value="5%" label="In FTC data, about 5% of older-adult loss reports were over $100,000, accounting for about 68% of total reported losses in 2024." sourceRef="FTC 2024-2025 report" />
+      </div>
+      <p class="mt-4 text-sm text-[#406386]">See full context and citations on the <a href="/sources">Sources page</a>.</p>
+    </div>
+  </section>
+
+  <section class="section-space pt-0">
+    <div class="container">
+      <h2>Top scam categories to learn first</h2>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {scams.slice(0, 6).map((scam) => (
+          <Card title={scam.data.title} summary={scam.data.excerpt} href={`/scam-library/${toSlug(scam.id)}/`} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

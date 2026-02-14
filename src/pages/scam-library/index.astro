@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import Card from '../../components/Card.astro';
+
+const scams = (await getCollection('scams')).sort((a, b) => a.data.order - b.data.order);
+const toSlug = (id: string) => id.replace(/\.md$/, '');
+---
+
+<PageLayout
+  title="Scam Library"
+  description="Read practical scam breakdowns with red flags, safe actions, and reporting steps."
+  canonicalPath="/scam-library"
+  intro="Each guide explains how a scam works, what to watch for, and what to do next."
+>
+  <section class="section-space pb-0">
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {scams.map((scam) => (
+        <Card title={scam.data.title} summary={scam.data.summary} href={`/scam-library/${toSlug(scam.id)}/`} />
+      ))}
+    </div>
+  </section>
+</PageLayout>

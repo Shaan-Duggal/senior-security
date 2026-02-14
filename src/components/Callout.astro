@@ -1,0 +1,13 @@
+---
+interface Props {
+  title: string;
+  type?: 'tip' | 'warning' | 'action';
+}
+
+const { title, type = 'tip' } = Astro.props;
+---
+
+<aside class={`callout ${type}`}>
+  <h3 class="mt-0 mb-2 text-xl">{title}</h3>
+  <div><slot /></div>
+</aside>

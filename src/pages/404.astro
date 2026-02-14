@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout
+  title="Page not found | Senior Security"
+  description="This page could not be found. Use the main sections to continue browsing Senior Security resources."
+  canonicalPath="/404"
+  noindex={true}
+>
+  <section class="section-space">
+    <div class="container">
+      <article class="panel p-8 text-center">
+        <h1 class="mt-0">Page not found</h1>
+        <p class="mx-auto text-xl text-[#2d4f73]">
+          The page may have moved. Use one of the links below.
+        </p>
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+          <Button href="/" text="Go home" />
+          <Button href="/scam-library" text="Scam library" variant="secondary" />
+          <Button href="/get-help" text="Get help" variant="secondary" />
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

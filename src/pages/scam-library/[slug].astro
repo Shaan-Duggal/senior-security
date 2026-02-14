@@ -1,0 +1,34 @@
+---
+import { getCollection, type CollectionEntry, render } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  const scams = await getCollection('scams');
+  return scams.map((scam) => ({
+    params: { slug: scam.id.replace(/\.md$/, '') },
+    props: { scam }
+  }));
+}
+
+interface Props {
+  scam: CollectionEntry<'scams'>;
+}
+
+const { scam } = Astro.props;
+const { Content } = await render(scam);
+---
+
+<PageLayout
+  title={scam.data.seoTitle}
+  description={scam.data.seoDescription}
+  canonicalPath={`/scam-library/${scam.id.replace(/\.md$/, '')}/`}
+  intro={scam.data.summary}
+>
+  <article class="section-space pb-0">
+    <div class="panel p-8 prose">
+      <p class="mt-0"><strong>Category:</strong> {scam.data.category}</p>
+      <p><strong>Current concern level:</strong> {scam.data.riskLevelLabel}</p>
+      <Content />
+    </div>
+  </article>
+</PageLayout>

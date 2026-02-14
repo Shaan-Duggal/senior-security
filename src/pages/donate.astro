@@ -1,0 +1,25 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<PageLayout
+  title="Donate"
+  description="Support Senior Security's educational resources and community workshops with an external donation link."
+  canonicalPath="/donate"
+  intro="Your contribution helps keep these resources free and easy to access."
+>
+  <section class="section-space pb-0">
+    <article class="panel p-8 prose">
+      <h2>How donations help</h2>
+      <ul>
+        <li>Keep scam-prevention guides and checklists free.</li>
+        <li>Support community workshops for older adults and caregivers.</li>
+        <li>Improve accessible content and translations over time.</li>
+      </ul>
+      <p>TODO: Replace placeholder with your real donation URL.</p>
+      <Button href="https://example.com/TODO-donate-link" text="Donate (placeholder link)" />
+      <p class="text-sm">No payments are processed on this website.</p>
+    </article>
+  </section>
+</PageLayout>

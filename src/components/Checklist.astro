@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string;
+  items: string[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<section class="checklist">
+  <h3 class="mt-0 mb-4 text-2xl">{title}</h3>
+  <ul>
+    {items.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+</section>

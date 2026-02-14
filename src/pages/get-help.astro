@@ -1,0 +1,50 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Callout from '../components/Callout.astro';
+---
+
+<PageLayout
+  title="Get Help"
+  description="Step-by-step support after a suspected scam, including trusted reporting links and recovery actions."
+  canonicalPath="/get-help"
+  intro="If something feels wrong, pause. You can take this one step at a time."
+>
+  <section class="section-space pb-0 space-y-6">
+    <Callout title="First, take a breath" type="tip">
+      <p class="m-0">Scammers rely on urgency. Slowing down is a strong and effective response.</p>
+    </Callout>
+
+    <article class="panel p-8 prose">
+      <h2>Immediate steps</h2>
+      <ol>
+        <li>Stop contact with the suspected scammer.</li>
+        <li>Call your bank, card issuer, or payment service right away.</li>
+        <li>Change passwords for email, banking, and key accounts from a trusted device.</li>
+        <li>Save evidence: screenshots, receipts, phone numbers, usernames, and messages.</li>
+        <li>Talk to someone you trust before sending any more money.</li>
+      </ol>
+
+      <h2>Report the scam</h2>
+      <ul>
+        <li>
+          Federal Trade Commission (FTC):
+          <a href="https://reportfraud.ftc.gov/" target="_blank" rel="noreferrer">reportfraud.ftc.gov</a>
+        </li>
+        <li>
+          FBI Internet Crime Complaint Center (IC3):
+          <a href="https://www.ic3.gov/" target="_blank" rel="noreferrer">ic3.gov</a>
+        </li>
+      </ul>
+
+      <h2>Support matters</h2>
+      <p>
+        You are not alone, and this is not your fault. Sharing what happened with a trusted person can help you make clear decisions and avoid additional loss.
+      </p>
+
+      <h2>Local support contacts</h2>
+      <p>
+        TODO: Add local helpline or community support contacts and optional office hours.
+      </p>
+    </article>
+  </section>
+</PageLayout>

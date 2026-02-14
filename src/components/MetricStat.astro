@@ -1,0 +1,15 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  sourceRef: string;
+}
+
+const { value, label, sourceRef } = Astro.props;
+---
+
+<article class="panel p-5">
+  <p class="mb-2 mt-0 text-3xl font-bold text-[#0f3f6d]">{value}</p>
+  <p class="mb-2 mt-0 text-[#1f476b]">{label}</p>
+  <p class="mb-0 text-sm text-[#406386]">Source: {sourceRef}</p>
+</article>
