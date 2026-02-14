@@ -75,21 +75,6 @@ This repo includes `.github/workflows/deploy.yml` using:
 2. Required frontmatter:
    - `title`, `summary`, `type` (`guide|checklist|script`), `printable`, `seoTitle`, `seoDescription`, `order`
 
-## Placeholder TODO map
-
-Open items to replace before launch:
-
-- Footer phone/contact line placeholder in `src/components/Footer.astro`
-- Workshops request URL placeholder in `src/pages/workshops.astro`
-- Local support contacts placeholder in `src/pages/get-help.astro`
-- Ambassador program description placeholder in `src/pages/about.astro`
-- Generate full production favicon set (ICO + Apple touch icon + multiple PNG sizes)
-
-Completed recently:
-
-- Footer contact email set to `contact@seniorsec.org`
-- Footer Instagram handle set to `@seniorsecorg`
-- Donation page placeholder replaced with reputable senior-support charity links
 
 ## CONTRIBUTING (content + sourcing rules)
 
